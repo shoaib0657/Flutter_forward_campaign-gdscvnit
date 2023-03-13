@@ -12,6 +12,13 @@ Once finished, run this command in the terminal to make sure your environment is
 $ flutter doctor
 ```
 # Dart Language
+## Hello World
+Every app has a `main()` function. To display text on the console, you can use the top-level `print()` function:
+```dart
+void main() {
+  print('Hello, World!');
+}
+```
 
 # Widgets
 Flutter apps are built using things called Widgets. If you are familiar with a frontend javascript framework, these are akin to components, but many come already built by the framework. Widgets are also quite similar to HTML elements like 'p' (for paragraph), 'h1' (for header 1), etc.
