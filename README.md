@@ -20,3 +20,4 @@ Widgets are essentially the basic elements or building blocks of an app that Flu
 // displays the text on the app screen
 Text('Some string here');
 ```
+![text_widget](text_widget.png)
