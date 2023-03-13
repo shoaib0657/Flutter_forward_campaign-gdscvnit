@@ -7,4 +7,6 @@ Flutter is a powerful and intuitive framework for building beautiful, cross-plat
 * Git for Windows
 * Install Android Studio
 Once finished, run this command in the terminal to make sure your environment is all ready to go.
-`$ flutter doctor`
+```flutter
+$ flutter doctor
+```
