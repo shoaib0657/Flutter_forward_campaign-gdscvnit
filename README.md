@@ -251,5 +251,400 @@ Text('Some string here');
 There's also a prebuilt button widget from the Flutter library called the ElevatedButton (just a Material theme button) which takes in an onPressed property (the code to be executed after the button is pressed) and a child property (the Text widget that displays the text of the button). Another one is the TextField, which handles input text.
 
 ### Layout
+Widgets are also used for things more complicated than just displaying text or pressing buttons. The way Flutter lays out things in the app is also done through widgets. For example, the Container widget, which is akin to the 'div' in html, will give us the ability to wrap another child widget in a container, in order to add padding, margins, colors, or something else. The inner widget is usually called the 'child' widget, and the container would be the 'parent' widget of the 'child' widget. Makes sense, right?
+
+```dart
+Container(
+  child: Text('hello!')
+),
+```
+
+Some more important layout widgets are the Row and Column widgets. These widgets allow you to stack widgets horizontally or vertically on the screen. They are instantiated by passing in a list of children widgets. Here's how they work.
+
+```dart
+Row(
+  children: [
+    // in the app, child widgets of a row are laid out left to right like so
+    Text('left text'),
+    Text('middle text'),
+    Text('right text'),
+  ],
+)
+
+Column(
+  children: [
+    // child widgets of a column are laid out top to bottom like so
+    Text('top text'),
+    Text('middle text'),
+    Text('bottom text'),
+  ],
+)
+```
+
+Left: Row
+<br />
+Right: Column
+
+<p>
+  <img width="60%" src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/row_widget.png">
+  <img width="30%" src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/column_widget.png">
+</p>
+
+Some layout widgets are wrapped around every other widget we put onto the screen. For example, the Scaffold widget is usually used to lay out or 'scaffold' the screen for us, and it is used like this:
+
+```dart
+Scaffold(
+  body: Container(
+    child: Text('hi!'),
+  ),
+)
+```
+
+Note: the Scaffold applies basic styling to the page, like making the background color white, making the text black, making a default font size, etc. Without a Scaffold, you are basically rendering pure or raw widgets to a completely blank screen that has essentially no data or styles applied.
+
+Left: with Scaffold
+<br />
+Right: without Scaffold
+
+<p>
+  <img width="45%" src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/scaffold_with.png">
+  <img width="45%" src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/scaffold_without.png">
+</p>
+
+Another useful widget is the ListView.builder widget. The ListView.builder widget takes in two main arguments - the itemCount (how many list items to build), and the itemBuilder (which will return what is actually built). Here's what it looks like.
+
+```dart
+List<String> people = ['John', 'Doe', 'Jane'];
+
+ListView.builder(
+  itemCount: people.length, // 3
+  // index is the current index that the builder is iterating on. think of it like the 
+  // 'i' in the for loop,  for (int i = 0; i < whatever; i++) 
+  itemBuilder: (context, index) {
+    return Container(
+      child: Text(people[index]),
+    );
+  },
+)
+```
+
+We will see later how these look in screenshots.
+
+### Properties / Parameters
+
+Each widget built by Flutter can be passed a number of properties or parameters. As we saw earlier, the Container widget takes in a 'child' property, and it can also take in a 'color' property to define the background color of the Container.
+
+Each widget will have a number of parameters specific to that widget that you can learn about by reading the Flutter Documentation or by using the IntelliSense of your IDE / Text Editor. For example, in VS Code, you can press ctrl+space or hover after typing in a Widget to see what properties it can use.
+
+Usually, you can also pass in all of your styles to the widget through the parameter.
+
+Many of these parameters only accept very specific types or objects. The 'child' property of the Container widget will only accept another Flutter widget. The 'color' property will only accept objects predefined by Flutter (like Colors.black, Colors.blue, etc) or objects instantiated in a certain way (Color(0xFFFFFFFF), one way to do it using hex codes).
+
+In the Text widget, we can style the text by passing in a 'TextStyle' object instantiated with our styles, passed into the 'style' property of the Text widget. Notice how the color property takes in a Color object from the Flutter library, Colors.purple. Also, the fontWeight property takes in a FontWeight object.
+
+```dart
+Text(
+  'text to display',
+  style: TextStyle(
+    // font color
+    color: Colors.purple,
+    // font size
+    fontSize: 16.0,
+    // font weight
+    fontWeight: FontWeight.bold,
+  ),
+)
+```
+
+<img src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/textstyle.png">
+
+For styling in a Container widget, we use the 'decoration' property and pass in a 'BoxDecoration' object that is instantiated with our styles.
+
+```dart
+Container(
+  // styling the container
+  decoration: BoxDecoration(
+    // you can define the background color in this object instead
+    color: Colors.blue,
+    // border radius - valid arguments must be of class BorderRadius
+    borderRadius: BorderRadius.circular(20.0),
+  ),
+  height: 50.0,
+  width: 50.0,
+  // margin of the container - argument must be of class EdgeInsets
+  margin: EdgeInsets.all(8.0),
+  // child element (using the Center widget centers the Text widget)
+  child: Center(
+    Text('hello!')
+  ),
+)
+```
+
+<img src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/container_style.png">
+
+In Column widgets, you might need to vertically align your objects to the center of the page. Here's how you could do that using the Column widget's 'mainAxisAlignment' property (main axis of the column is vertical). You can also align text horizontally in a column widget using the 'crossAxisAlignment' property.
+
+```dart
+Column(
+  // argument passed in must use the MainAxisAlignment object 
+  // can you start to see the practices and conventions Flutter everywhere?
+  mainAxisAlignment: MainAxisAlignment.center,
+  children: [
+    Text('top text'),
+    Text('center text'), 
+    Text('bottom text'),
+  ],
+)
+```
+
+Left: without MainAxisAlignment.center
+<br />
+Right: with MainAxisAlignment.center (as in the code example above)
+
+<p>
+  <img width="45%" src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/column_start.png">
+  <img  width="45%"src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/column_center.png">
+</p>
+
+
+Other properties of Column include crossAxisAlignment, mainAxisSize, and more. Chances are, if you feel like you need to do something to style your widget, you just need to Google the properties of that widget, or Google how to accomplish what you need to find which property to use.
+
+The amount of properties and classes you need might seem a bit daunting to learn about, but over time it will become intuitive for you (plus, Google is your best friend)! 
+
+### Formatting
+
+Now, you might be wondering, what the heck are all these commas and new lines everywhere? The reason I've laid out the code like this is because of how your IDE will format your code for you. It does this by detecting trialing commas and adding corresponding new lines. 
+
+Adhering to the formatter will make your code much more readable both for yourself and for others. Here's a simple example.
+
+```dart
+
+// weird code you might write totally without a formatter
+// not very good, is it?
+Column(children:[
+  Container
+  (child: Text
+  (
+    'hi!'
+  )),
+  Text(
+    'hi'
+  )
+]
+)
+
+// code you might write with the formatter, but without adhering to the formatting guidelines
+Column(children: [
+  Container(color: Color(0xFFFFFF), child: Text('hey there'), margin: EdgeInsets.all(5.0), padding: EdgeInsets.all(5.0)),
+  Text('hi')])
+
+// code you write with the formatter, that adheres to the formatter
+Column(
+  children: [
+    Container(
+      color: Color(0xFFFFFF),
+      child: Text('hey there'),
+      margin: EdgeInsets.all(5.0),// add a trailing comma to the last parameter (margin)
+    ), // add a trailing comma to the Widget
+    Text('hi'), // add a trailing comma to the last child of the Column
+  ], // add a trialing comma to the children parameter
+)
+```
+
+Would you agree with me in saying that the last example is the easiest to read and the easiest to code with (disregarding the comments)?
+
+Simply just add a trailing comma to your widgets and their parameters, hit save, and the formatter will do the rest for you. Over time, you'll get better and better at it.
+
+### Stateless Widgets
+
+Stateless widgets are essentially widgets that don't change - they are static. One example of a stateless widget would be a page that displays the names of the states in the US in a list. Let's take a look at a more simple example by creating a stateless widget that simply returns a white container. Here's the syntax for defining a stateless widget.
+
+```dart
+class ListOfStates extends StatelessWidget {
+  // this is the constructor, but don't worry about it right now
+  const ListOfStates({Key? key}) : super(key: key);
+
+  // @override is good practice to tell us that the following method (in this case,
+  // the build method) is being overriden from the default build method
+  @override
+  // this build function returns a Widget
+  Widget build(BuildContext context) {
+    return Container(color: Color(0xFFFFFFFF));
+  }
+}
+```
+
+Good news - most IDEs contain snippets to automatically create stateless widgets for you! Just type in stless into your IDE and press TAB or Enter to generate all the code necessary.
+
+If you would like to add parameters for your stateless widget (for example, making a 'message' parameter to pass into a stateless widget that displays that message), we need to use constructors in the same way that classes are constructed. Here's how.
+
+```dart
+class DisplayMessage extends StatelessWidget {
+  // add it to the constructor here after the key, as 'required this.<parameter>'
+  DisplayMessage({ Key? key, required this.message }) : super(key: key);
+
+  // initialize it as a 'final' variable (it won't change)
+  final String message
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Text(message),
+    );
+  }
+}
+```
+
+This widget would then be instantiated in another parent widget like so:
+
+```dart
+Scaffold(
+  body: Column(
+    children: [
+      ...
+      // instantiating the stateless widget we just created (which is in another file) 
+      // with string, the message we want to display
+      DisplayMessage(message: 'Hello there!'),
+      ...
+    ],
+  ),
+)
+```
+
+
+### Stateful Widgets 
+
+Stateful widgets are widgets that can react to certain changes and then be rebuilt. This is useful if we want our app to be interactive. For example, let's say we want to have a counter in our app. Whenever the user presses a '+' button, we want the app to display an increase in a variable we define, 'count'. Here's how.
+
+Note: whenever we want our stateful widget to react to any changes (which requires Flutter to rebuild the page), we use the setState(() {}) method.
+
+```dart
+class DisplayCount extends StatefulWidget {
+  const DisplayCount({Key? key}) : super(key: key); 
+
+  @override
+  _DisplayCountState createState() => _DisplayCountState();
+}
+
+class _DisplayCountState extends State<DisplayCount> {
+
+  // defining a variable, count, inside our widget
+  int count = 0;    
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        // display the count as a string
+        Text(count.toString()),
+
+        ElevatedButton(
+          // the text displayed on the button
+          child: Text('Click me to add +'),
+
+          // the code that will execute when the button is pressed
+          onPressed: () {
+            // setState is called to signal to Flutter to rebuild the widget
+            // count is incremented by 1, so the widget will be rebuilt with 
+            // a new value displayed in the text widget above
+            setState(() {
+                count += 1;
+            });
+          },
+        ),
+      ],
+    );
+  }
+}
+```
+
+We also have access to IDE snippets for stateful widgets too. Just type in stful.
+
+Constructors in stateful widgets are the same, but they are only declared in the DisplayCount widget and not the _DisplayCountState widget. In the _DisplayCountState widget where you will be putting your code, you can refer to the variable as (widget.[variable]).
+
+```dart
+class DisplayCount extends StatefulWidget {
+  const DisplayCount({Key? key, required this.message}) : super(key: key); 
+
+  final String message;
+
+  @override
+  _DisplayCountState createState() => _DisplayCountState();
+}
+
+class _DisplayCountState extends State<DisplayCount> {
+  ...
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        // refer to the 'message' attribute defined above as widget.message
+        Text(widget.message),
+        ...
+      ],
+    );
+  }
+  ...
+}
+```
+
+Stateful widgets are instantiated in the same way as Stateless widgets are.
+
+
+Stateful widgets are very useful for dealing with anything related to business logic, interactive features, and listening to streams of data on the backend, as we'll see later.
+
+
+### Null Safety
+
+In recent versions of Flutter, null safety was introduced in order to greatly help developers in dealing with notorious null errors.
+
+Essentially, if something like a String is declared and is supposed to be assigned a valid value like 'Hi!', in the case that it somehow is assigned a null value (basically, assigned a value of nothing), then all sorts of problems start to happen - some parts might start missing text, functionalities, etc.
+
+Flutter's null safety helps developers fix these issues by using powerful IDE features that force developers to be more strict with null checking. This means that developers have to account for the situations in which the variables they declare might take on null values.
+
+In null safety, there are 3 important symbols to know about. The '?' symbol, the '!' symbol, and the '??' symbol.
+
+### '?'
+
+If we declare a variable that we think might somehow take on a null value, we add the '?' operator to the end of the type declaration to remind us and the IDE to include strict null checking on that variable. Here's an example.
+
+```dart
+// initializing a string wih a nullable type and assigning it to the 
+// return value of this function, fetchSomeDataOrSomething()
+String? response = await fetchSomeDataOrSomething(); 
+// in the case that the function returned something null and response has a null value,
+// it is now safely accounted for with this conditional statement
+if (response != null) {
+  print(response);
+} else {
+  print('error');
+}
+```
+
+### '!'
+
+If we declare a nullable type for a variable but we know for certain that it won't be null, we use the '!' operator at the end of the variable name. Note: try to avoid using this because it bypasses all the null safety checks performed by the IDE.
+
+```dart
+// fetchSomeData() returns type bool
+bool? response = fetchSomeData(); 
+// declaring that response will always be a valid value and not null
+if (response! == True) { 
+  print('function has returned true');
+} else {
+  print('function has returned false');
+}
+```
+
+### '??'
+
+When we are assigning a value to a variable, we can check whether it is null or not and assign a value from there. If the value it is assigned is null, we can add the '??' operator and add a default value on the right, in case it is null.
+
+```dart
+String? response = fetchSomething();
+// if response is not null, the 'something' variable will take on the value of response'
+// if response is null, the 'something' variable with take on the value on the right side
+String something = response ?? 'defaultValue';
+```
 
 
