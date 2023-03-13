@@ -72,3 +72,4 @@ Widgets are essentially the basic elements or building blocks of an app that Flu
 Text('Some string here');
 ```
 ![text_widget](text_widget.png)
+There's also a prebuilt button widget from the Flutter library called the ElevatedButton (just a Material theme button) which takes in an onPressed property (the code to be executed after the button is pressed) and a child property (the Text widget that displays the text of the button). Another one is the TextField, which handles input text.
