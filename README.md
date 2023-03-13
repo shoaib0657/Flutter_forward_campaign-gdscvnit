@@ -12,7 +12,7 @@ Once finished, run this command in the terminal to make sure your environment is
 ```flutter
 $ flutter doctor
 ```
-<hr>
+<hr/>
 # Dart Language
 
 <hr>
