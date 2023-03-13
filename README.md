@@ -3,9 +3,9 @@
 # Introduction
 Flutter is a powerful and intuitive framework for building beautiful, cross-platform mobile applications that uses the Dart programming language.
 # Setting Up for Flutter Development
-* Getting Started: Installing Flutter
-* Git for Windows
-* Install Android Studio\
+* [Getting Started: Installing Flutter]([url](https://docs.flutter.dev/get-started/install))
+* [Git for Windows]([url](https://git-scm.com/downloads))
+* [Install Android Studio]([url](https://developer.android.com/studio))\
 \
 Once finished, run this command in the terminal to make sure your environment is all ready to go.
 ```flutter
