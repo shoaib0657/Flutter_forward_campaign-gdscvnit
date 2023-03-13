@@ -1,7 +1,8 @@
 # Flutter
 
 # Introduction
-Flutter is a powerful and intuitive framework for building beautiful, cross-platform mobile applications that uses the Dart programming language.
+Flutter is a powerful and intuitive framework for building beautiful, cross-platform mobile applications that uses the Dart programming language.\
+[What makes Flutter different for app development?](https://www.youtube.com/watch?v=l-YO9CmaSUM)
 # Setting Up for Flutter Development
 * [Getting Started: Installing Flutter](https://docs.flutter.dev/get-started/install)
 * [Git for Windows](https://git-scm.com/downloads)
