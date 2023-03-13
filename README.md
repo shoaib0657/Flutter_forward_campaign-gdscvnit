@@ -19,6 +19,49 @@ void main() {
   print('Hello, World!');
 }
 ```
+## Variables
+Even in type-safe Dart code, most variables don’t need explicit types, thanks to type inference:
+```dart
+var name = 'Voyager I';
+var year = 1977;
+var antennaDiameter = 3.7;
+var flybyObjects = ['Jupiter', 'Saturn', 'Uranus', 'Neptune'];
+var image = {
+  'tags': ['saturn'],
+  'url': '//path/to/saturn.jpg'
+};
+```
+## Control flow statements
+Dart supports the usual control flow statements:
+```dart
+if (year >= 2001) {
+  print('21st century');
+} else if (year >= 1901) {
+  print('20th century');
+}
+
+for (final object in flybyObjects) {
+  print(object);
+}
+
+for (int month = 1; month <= 12; month++) {
+  print(month);
+}
+
+while (year < 2016) {
+  year += 1;
+}
+```
+## Functions
+We recommend specifying the types of each function’s arguments and return value:
+```dart
+int fibonacci(int n) {
+  if (n == 0 || n == 1) return n;
+  return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+var result = fibonacci(20);
+```
 
 # Widgets
 Flutter apps are built using things called Widgets. If you are familiar with a frontend javascript framework, these are akin to components, but many come already built by the framework. Widgets are also quite similar to HTML elements like 'p' (for paragraph), 'h1' (for header 1), etc.
