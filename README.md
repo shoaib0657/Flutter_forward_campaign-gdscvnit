@@ -5,13 +5,9 @@ Flutter is a powerful and intuitive framework for building beautiful, cross-plat
 
 This essentially means that Flutter can be used to write one codebase for an app that runs natively on both iOS and Android.
 
-With all the hype around Flutter and mobile app development, learning Flutter is both a valuable skill and a gratifying endeavor in its own right. However, the path to learning Flutter is a little unclear due to how new the language is.
+Learning Flutter is both a valuable skill and a gratifying endeavor in its own right. However, the path to learning Flutter is a little unclear due to how new the language is.
 - the language is constantly being updated (to the point where tutorials from just a few months ago are out of date)
 - there are a lack of freely available, well thought out and comprehensive courses or books compared to some other more established frameworks and languages like python
-
-This guide compiles tutorials, tips, examples (with screenshots), resources, and even an example project to help make the learning process for Flutter much easier. You can be a complete beginner, an intermediate or even advanced programmer to use this guide. I hope you find it helpful!
-
-Note: See the 'code' folder in this repository for all of the code within this guide.
 
 [What makes Flutter different for app development?](https://www.youtube.com/watch?v=l-YO9CmaSUM)
 # Setting Up for Flutter Development
