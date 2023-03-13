@@ -2,6 +2,7 @@
 
 # Introduction
 Flutter is a powerful and intuitive framework for building beautiful, cross-platform mobile applications that uses the Dart programming language.
+<hr>
 # Setting Up for Flutter Development
 * Getting Started: Installing Flutter
 * Git for Windows
@@ -11,7 +12,10 @@ Once finished, run this command in the terminal to make sure your environment is
 ```flutter
 $ flutter doctor
 ```
+<hr>
+# Dart Language
 
+<hr>
 # Widgets
 Flutter apps are built using things called Widgets. If you are familiar with a frontend javascript framework, these are akin to components, but many come already built by the framework. Widgets are also quite similar to HTML elements like 'p' (for paragraph), 'h1' (for header 1), etc.
 
